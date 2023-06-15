@@ -46,7 +46,7 @@ export class I18n<K extends string = string, D extends DictJsonType = DictJsonTy
     if (!dict) return key;
     const v = dict[key];
     if (typeof v === 'string') {
-      return pupa(v, args, { ignoreMissing: true });
+      return pupa(v, args);
     }
     return key;
   }
