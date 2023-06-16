@@ -16,11 +16,11 @@ function flattenDict(dict: DictJsonType, prefix = ''): Record<string, string> {
   }, {});
 }
 
-export class I18n<K extends string = string, D extends DictJsonType = DictJsonType> implements I18nInterface {
+export class I18n<K extends string = string, D extends DictJsonType = DictJsonType, L extends K = K> implements I18nInterface {
   private readonly dictionaries: Record<K, Record<string, string>>;
   private locale?: K;
 
-  constructor(dict: Record<K, D> = {} as Record<K, D>, locale?: K) {
+  constructor(dict: Record<K, D> = {} as Record<K, D>, locale?: L) {
     // 拍平多層詞典
     this.dictionaries = Object.keys(dict).reduce((map, key) => {
       const value = dict[key];

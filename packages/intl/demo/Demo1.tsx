@@ -1,24 +1,29 @@
 import I18n, { createUseI18n } from '@orca-fe/intl';
 import { Button } from 'antd';
 
-const i18n = new I18n({
-  'zh-CN': {
-    hello: '你好',
-    world: '世界',
-    user: {
-      info: '用户信息',
-      label: '姓名：{name}',
+const i18n = new I18n(
+  {
+    'zh-CN': {
+      hello: '你好',
+      world: '世界',
+      user: {
+        info: '用户信息',
+        label: '姓名：{name}',
+      },
+    },
+    'en-US': {
+      hello: 'hello',
+      world: 'world',
+      user: {
+        info: 'user info',
+        label: 'name: {name}',
+      },
     },
   },
-  'en-US': {
-    hello: 'hello',
-    world: 'world',
-    user: {
-      info: 'user info',
-      label: 'name: {name}',
-    },
-  },
-});
+  'en-US',
+);
+
+i18n.setLocale('en-US');
 
 const hello = i18n.t('hello');
 
