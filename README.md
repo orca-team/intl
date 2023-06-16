@@ -2,6 +2,16 @@
 
 轻量化的应用级国际化解决方案
 
+## 安装
+
+```bash
+npm i @orca-fe/intl
+# or
+yarn add @orca-fe/intl
+# or
+pnpm i @orca-fe/intl
+```
+
 ## 使用方式
 
 ```ts
