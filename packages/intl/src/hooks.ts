@@ -23,16 +23,15 @@ function useMemorizedFn<T extends noop>(fn: T) {
 
 export function createUseI18n(i18n: I18n) {
   const events = new EventEmitter();
+  const changeLocale = (locale: string) => {
+    i18n.setLocale(locale);
+    events.emit('change', locale);
+  };
 
-  return function useIntl() {
+  function useIntl() {
     const [locale, setLocale] = useState(i18n.getLocale());
 
     const translate = useMemorizedFn((key: string, args?: Record<string, any>) => i18n.staticTranslate(key, args));
-
-    const changeLocale = useMemorizedFn((locale: string) => {
-      i18n.setLocale(locale);
-      events.emit('change', locale);
-    });
 
     useEffect(() => {
       events.on('change', setLocale);
@@ -42,5 +41,9 @@ export function createUseI18n(i18n: I18n) {
     }, []);
 
     return [translate, locale, changeLocale] as const;
-  };
+  }
+
+  useIntl.changeLocale = changeLocale;
+
+  return useIntl;
 }

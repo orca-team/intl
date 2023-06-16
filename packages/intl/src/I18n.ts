@@ -41,6 +41,10 @@ export class I18n<K extends string = string, D extends DictJsonType = DictJsonTy
     return this.locale;
   }
 
+  getAvailableLocales() {
+    return Object.keys(this.dictionaries) as K[];
+  }
+
   staticTranslate(key: DictKey<D>, args: Record<string, any> = {}) {
     const dict = this.dictionaries[this.locale!];
     if (!dict) return key;
