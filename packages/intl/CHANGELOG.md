@@ -1,5 +1,11 @@
 # @orca-fe/intl
 
+## 0.0.3
+
+### Patch Changes
+
+- fix: type error
+
 ## 0.0.2
 
 ### Patch Changes
